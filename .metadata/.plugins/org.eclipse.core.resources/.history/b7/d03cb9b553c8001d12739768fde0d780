@@ -1,0 +1,59 @@
+package edu.pnu.service;
+
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
+
+import edu.pnu.domain.MemberVO;
+
+public class BoardService {
+	
+	private List<MemberVO> list = new ArrayList<>();
+	
+	public BoardService() {		
+		list.add(new MemberVO(1, "a", "b", new Date(0)));
+		list.add(new MemberVO(2, "a", "b", new Date(0)));
+		list.add(new MemberVO(3, "a", "b", new Date(0)));
+
+	}
+	
+	public List<MemberVO> getMembers() {
+		return list;
+	}
+	
+	public MemberVO getMember(Integer id) {
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).getId() == id) {
+				return list.get(i);
+			}
+		}
+		return null;
+	}
+	
+	public MemberVO addMember(MemberVO m) {
+		list.add(m);
+		return m;
+	}
+	
+	public MemberVO updateMember(MemberVO m) {
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).getId() == m.getId()) {
+				list.remove(i);
+				list.add(m);
+			}
+		}
+		return m;
+	}
+	
+	public MemberVO removeMember(Integer id) {
+		
+		MemberVO m = null;
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).getId() == id) {
+				m = list.get(i);
+				list.remove(i);
+			}
+		}
+		return m;
+	}
+}

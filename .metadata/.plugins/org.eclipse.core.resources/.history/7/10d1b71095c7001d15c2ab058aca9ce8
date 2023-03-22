@@ -1,0 +1,14 @@
+package edu.pnu.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+
+public class BoardController {
+	public BoardController() {
+		System.out.println("===> BoardController생성");
+	}
+	
+	@GetMapping("/hello")
+	public String hello(String name) {
+		return "Hello : " + name;
+	}
+}
