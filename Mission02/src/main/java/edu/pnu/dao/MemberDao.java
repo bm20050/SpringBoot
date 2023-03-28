@@ -87,7 +87,7 @@ public class MemberDao {
 			
 			psmt.executeUpdate();
 			List<MemberVO> l = getMembers();
-			return getMember(l.get(l.size() - 1).getId());
+			return l.get(l.size() - 1);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
