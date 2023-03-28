@@ -15,7 +15,7 @@ import edu.pnu.service.MemberService;
 @RestController
 public class MemberController {
 	
-	MemberService ms = new MemberService();
+	private MemberService ms = new MemberService();
 	
 	public MemberController() {
 		System.out.println("===> BoardController생성");

@@ -2,6 +2,8 @@ package edu.pnu.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,9 +17,17 @@ import edu.pnu.service.MemberService;
 @RestController
 public class MemberController {
 	
-	MemberService ms;
+	private MemberService ms;
+	
+	private static final Logger Log = LoggerFactory.getLogger(MemberController.class); 
 	
 	public MemberController() throws Exception {
+		Log.info("MemberController 생성자 호출");
+		Log.error("Error Message 입니다.");
+		Log.warn("Warn Message 입니다.");
+		Log.info("Info Message 입니다.");
+		Log.debug("Debug Message 입니다.");
+		Log.trace("Trace Message 입니다.");
 		ms = new MemberService();
 		System.out.println("===> BoardController생성");
 	}
