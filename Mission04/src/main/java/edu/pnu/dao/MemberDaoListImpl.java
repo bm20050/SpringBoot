@@ -1,10 +1,9 @@
 package edu.pnu.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.pnu.domain.MemberVO;
 
@@ -14,6 +13,7 @@ public class MemberDaoListImpl implements MemberDao {
 	private Map<String, Object> map;
 	public MemberDaoListImpl() {
 		list = new ArrayList<>();
+		map = new HashMap<>();
 	}
 	
 	public Map<String, Object> getMembers() {
@@ -35,8 +35,7 @@ public class MemberDaoListImpl implements MemberDao {
 				map.put("query", "");
 				map.put("bool", true);
 				return map;
-			}
-				
+			}		
 		}
 		map.put("m", null);
 		map.put("query", "");

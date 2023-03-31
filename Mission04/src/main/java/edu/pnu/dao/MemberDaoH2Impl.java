@@ -20,7 +20,6 @@ public class MemberDaoH2Impl extends DaoH2 implements MemberDao  {
 	private Connection con = null;
 	private Map<String, Object> map;
 	
-	
 	public MemberDaoH2Impl() {
 		super();
 	}
@@ -35,7 +34,7 @@ public class MemberDaoH2Impl extends DaoH2 implements MemberDao  {
 			String query = "select * from member order by id asc";
 			st = getConnection().createStatement();
 			rs = st.executeQuery(query);
-			while(rs.next() ) {
+			while(rs.next()) {
 				MemberVO m = new MemberVO();
 				m.setId(rs.getInt("id"));
 				m.setPass(rs.getString("pass"));
@@ -49,13 +48,13 @@ public class MemberDaoH2Impl extends DaoH2 implements MemberDao  {
 		} catch (Exception e) {
 			map.put("query", e.getMessage());
 			map.put("bool", false);
-			// e.printStackTrace();
+			e.printStackTrace();
 		} finally {
 			try {
 				if (rs != null) rs.close();
 				if (st != null) st.close();
 			} catch (SQLException e) {
-				//e.printStackTrace();
+				e.printStackTrace();
 			}
 		}
 		return map;

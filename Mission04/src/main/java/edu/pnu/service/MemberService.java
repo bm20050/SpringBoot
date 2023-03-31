@@ -7,30 +7,30 @@ import java.util.Map;
 import edu.pnu.dao.MemberDaoH2Impl;
 import edu.pnu.dao.MemberDaoListImpl;
 import edu.pnu.dao.log.LogDao;
+import edu.pnu.dao.log.LogDaoFileImpl;
 import edu.pnu.dao.log.LogDaoH2Impl;
 import edu.pnu.dao.MemberDao;
 import edu.pnu.domain.MemberVO;
 
 public class MemberService {
 	
-	// private MemberDao memberDao;
+	private MemberDao memberDaoH2;
+	private MemberDao memberDaoList;
 	private Map<String, Object> map;
 	private LogDao logDao;
+	
+	
 	public MemberService() {
 		map = new HashMap<>();
-		map.put("h2", new MemberDaoH2Impl());
-		map.put("list", new MemberDaoListImpl());
-
-//		MemberDaoH2Impl md = new MemberDaoH2Impl());
-//		map.put("h2", md);
-//		map.put("list", new MemberDaoListImpl());
-
-//		logDao = new LogDaoH2Impl(md.getConnection());
-		
 		logDao = new LogDaoH2Impl();
+		memberDaoH2 = new MemberDaoH2Impl();
+		memberDaoList = new MemberDaoListImpl();
+		// logDao = new LogDaoFileImpl();
 	}
 	
 	private MemberDao getDao(String type) {
+		map.put("h2", memberDaoH2);
+		map.put("list", memberDaoList);
 		return (MemberDao) map.get(type);
 	}
 	

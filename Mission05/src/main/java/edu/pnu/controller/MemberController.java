@@ -2,15 +2,12 @@ package edu.pnu.controller;
 
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.pnu.domain.MemberVO;
@@ -19,16 +16,16 @@ import edu.pnu.service.MemberService;
 @RestController
 public class MemberController {
 	
+	@Autowired
 	private MemberService memberService;
-	// private static final Logger log = LoggerFactory.getLogger(MemberController.class);
 	
 	public MemberController() {
-		memberService = new MemberService();
+		// TODO Auto-generated constructor stub
 	}
 	
 	@GetMapping("/member")
 	public List<MemberVO> getMembers(String type) {
-		return memberService.getMembers(type);
+		return memberService.getMembers(type); 
 	}
 	
 	@GetMapping("/member/{id}")
@@ -37,13 +34,13 @@ public class MemberController {
 	}
 	
 	@PostMapping("/member")
-	public MemberVO addMember(MemberVO memberVO, String type) {
-		return memberService.addMember(memberVO, type);
+	public MemberVO addMember(String type) {
+		return memberService.addMember(type);
 	}
-
+	
 	@PutMapping("/member")
-	public MemberVO updateMember(MemberVO memberVO, String type) {
-		return memberService.updateMember(memberVO, type);
+	public MemberVO updateMember(String type) {
+		return memberService.updateMember(type);
 	}
 	
 	@DeleteMapping("/member/{id}")
