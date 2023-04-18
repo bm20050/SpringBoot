@@ -24,7 +24,7 @@
 	</tr>
 	<tr>
 		<td bgcolor="pink" th:text="등록일"></td>
-		<td th:text="${#dates.format(board.createDate, 'yyyy-MM-dd')}"></td>
+		<td th:text="${board.createDate}"></td>
 	</tr>
 	<tr>
 		<td bgcolor="pink" th:text="조회수"></td>
@@ -38,7 +38,8 @@
 </table>
 </form>
 <a th:href="@{/insertBoard}">글등록</a>&nbsp;&nbsp;&nbsp;
-<a th:href="@{/deleteBoard(seq=${board.seq})}">글삭제</a>&nbsp;&nbsp;&nbsp;
+<a th:if="${session['member'].role == 'ROLE_ADMIN'}" 
+	th:href="@{/deleteBoard(seq=${board.seq})}">글삭제</a>&nbsp;&nbsp;&nbsp;
 <a th:href="@{/getBoardList}">글목록</a>
 </body>
 </html>
